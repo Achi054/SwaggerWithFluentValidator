@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SwaggerWithFluentValidation</name>
+    </assembly>
+    <members>
+        <member name="M:SwaggerWithFluentValidation.Controllers.HomeController.Get">
+            <summary>
+            Retrieves test data
+            </summary>
+            <returns>Test data</returns>
+        </member>
+        <member name="M:SwaggerWithFluentValidation.Controllers.HomeController.Post(SwaggerWithFluentValidation.Models.HomeViewModel)">
+            <summary>
+            Retrieves test data
+            </summary>
+            <returns>Test data</returns>
+        </member>
+    </members>
+</doc>

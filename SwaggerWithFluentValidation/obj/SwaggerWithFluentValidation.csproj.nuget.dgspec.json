@@ -1,0 +1,80 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\TigerBox\\POC\\SwaggerWithFluentValidation\\SwaggerWithFluentValidation\\SwaggerWithFluentValidation.csproj": {}
+  },
+  "projects": {
+    "C:\\TigerBox\\POC\\SwaggerWithFluentValidation\\SwaggerWithFluentValidation\\SwaggerWithFluentValidation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\TigerBox\\POC\\SwaggerWithFluentValidation\\SwaggerWithFluentValidation\\SwaggerWithFluentValidation.csproj",
+        "projectName": "SwaggerWithFluentValidation",
+        "projectPath": "C:\\TigerBox\\POC\\SwaggerWithFluentValidation\\SwaggerWithFluentValidation\\SwaggerWithFluentValidation.csproj",
+        "packagesPath": "C:\\Users\\O3BE\\.nuget\\packages\\",
+        "outputPath": "C:\\TigerBox\\POC\\SwaggerWithFluentValidation\\SwaggerWithFluentValidation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\O3BE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "http://EOL_CI_build_master_ehad/nuget": {},
+          "http://alm.eurofins.local/sharedcomponents/nuget/": {},
+          "http://eol_ci_build_master_india/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
+            "MicroElements.Swashbuckle.FluentValidation": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
