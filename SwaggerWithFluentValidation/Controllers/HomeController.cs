@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SwaggerWithFluentValidation.Models;
 
@@ -9,30 +10,30 @@ namespace SwaggerWithFluentValidation.Controllers
     public class HomeController : ControllerBase
     {
         /// <summary>
-        /// Retrieves test data
+        ///     Retrieves test data.
         /// </summary>
-        /// <returns>Test data</returns>
+        /// <returns>Test data.</returns>
         [HttpGet]
         [Produces("application/json")]
         [ProducesResponseType(typeof(HomeViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(HomeViewModel), (int)HttpStatusCode.NotFound)]
-        public IActionResult Get()
+        public async Task<ActionResult<HomeViewModel>> Get()
         {
             var model = new HomeViewModel();
-            return Ok(model);
+            return Ok(await Task.FromResult(model).ConfigureAwait(false));
         }
 
         /// <summary>
-        /// Retrieves test data
+        ///     Retrieves test data.
         /// </summary>
-        /// <returns>Test data</returns>
+        /// <returns>Test data.</returns>
         [HttpPost]
         [Produces("application/json")]
         [ProducesResponseType(typeof(HomeViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(HomeViewModel), (int)HttpStatusCode.NotFound)]
-        public IActionResult Post([FromBody]HomeViewModel model)
+        public async Task<ActionResult> Post([FromBody]HomeViewModel model)
         {
-            return Ok(model);
+            return Ok(await Task.FromResult(model).ConfigureAwait(false));
         }
     }
 }

@@ -2,12 +2,13 @@
 using System.IO;
 using System.Reflection;
 using FluentValidation.AspNetCore;
-using MicroElements.Swashbuckle.FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using SwaggerWithFluentValidation.Models.Validators;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -27,26 +28,26 @@ namespace SwaggerWithFluentValidation
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info() { Title = "Web App", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Web App", Version = "v1" });
+
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
-                c.SchemaFilter<FluentValidationRules>();
-                c.OperationFilter<FluentValidationOperationFilter>();
+                c.AddFluentValidationRulesScoped();
             });
 
             services.AddMvc()
                 .AddFluentValidation(fv =>
-                    {
-                        fv.RegisterValidatorsFromAssemblyContaining<HomeViewModelValidator>();
-                        fv.ImplicitlyValidateChildProperties = true;
-                    })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                {
+                    fv.RegisterValidatorsFromAssemblyContaining<HomeViewModelValidator>();
+                    fv.ImplicitlyValidateChildProperties = true;
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -66,7 +67,8 @@ namespace SwaggerWithFluentValidation
             });
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseRouting();
+            app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
         }
     }
 }
